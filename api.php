@@ -38,6 +38,16 @@ if ($resource !== 'products') {
  
 }
 
+function isProductExist($pdo, $id) : bool {
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
+    $stmt->execute([$id]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$product) {
+        return false;
+    }
+    return true;
+}
+
 switch ($method) {
     case 'POST':
         if (!isset($input['name'], $input['price'])) {
@@ -87,10 +97,8 @@ switch ($method) {
             echo json_encode(['error' => 'Price must be a number']);
         }
 
-        $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
-        $stmt->execute([$id]);
-        $product = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$product) {
+        
+        if(!isProductExist($pdo, $id)){
             http_response_code(404);
             echo json_encode(['error' => 'Product not found']);
             break;
@@ -106,6 +114,11 @@ switch ($method) {
             http_response_code(400);
             echo json_encode(['error' => 'Invalid ID']);
             
+        }
+        if(!isProductExist($pdo, $id)){
+            http_response_code(404);
+            echo json_encode(['error' => 'Product not found']);
+            break;
         }
         $stmt = $pdo->prepare("DELETE FROM products WHERE id = ?");
         $stmt->execute([$id]);

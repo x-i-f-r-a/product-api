@@ -14,16 +14,16 @@
 # Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDQwOTExOTcsImV4cCI6MTc0NDA5NDc5NywidWlkIjoxfQ.YwTx_SL9zqlhCO3yCBTt_KNvkmtULmHqXng6l7VdInk
 
 
-PUT http://127.0.0.1:8000/api.php/products/21 HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDQwOTExOTcsImV4cCI6MTc0NDA5NDc5NywidWlkIjoxfQ.YwTx_SL9zqlhCO3yCBTt_KNvkmtULmHqXng6l7VdInk
-Content-Type: application/json
+# PUT http://127.0.0.1:8000/api.php/products/21 HTTP/1.1
+# Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDQwOTExOTcsImV4cCI6MTc0NDA5NDc5NywidWlkIjoxfQ.YwTx_SL9zqlhCO3yCBTt_KNvkmtULmHqXng6l7VdInk
+# Content-Type: application/json
 
-{
-    "name": "MacBook Pro 2023",
-    "price": 2599.99,
-    "description": "Updated M3 version"
-}
+# {
+#     "name": "MacBook Pro 2023",
+#     "price": 2599.99,
+#     "description": "Updated M3 version"
+# }
 
-# DELETE  http://127.0.0.1:8000/api.php/products/1 HTTP/1.1
+# DELETE  http://127.0.0.1:8000/api.php/products/3 HTTP/1.1
 # Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE3NDQwOTExOTcsImV4cCI6MTc0NDA5NDc5NywidWlkIjoxfQ.YwTx_SL9zqlhCO3yCBTt_KNvkmtULmHqXng6l7VdInk
 
