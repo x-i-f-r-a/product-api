@@ -44,6 +44,11 @@ switch ($method) {
             http_response_code(400);
             echo json_encode(['error' => 'Missing name or price']);
         }
+
+        if(!is_numeric($input['price'])){
+            http_response_code(400);
+            echo json_encode(['error' => 'Price must be a number']);
+        }
         $stmt = $pdo->prepare("INSERT INTO products (name, price, description) VALUES (?, ?, ?)");
         $stmt->execute([$input['name'], $input['price'], $input['description'] ?? null]);
         echo json_encode(['message' => 'Product created']);
@@ -77,6 +82,20 @@ switch ($method) {
             echo json_encode(['error' => 'Missing name or price']);
            
         }
+        if(!is_numeric($input['price'])){
+            http_response_code(400);
+            echo json_encode(['error' => 'Price must be a number']);
+        }
+
+        $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$product) {
+            http_response_code(404);
+            echo json_encode(['error' => 'Product not found']);
+            break;
+        }
+
         $stmt = $pdo->prepare("UPDATE products SET name = ?, price = ?, description = ? WHERE id = ?");
         $stmt->execute([$input['name'], $input['price'], $input['description'] ?? null, $id]);
         echo json_encode(['message' => 'Product updated']);
